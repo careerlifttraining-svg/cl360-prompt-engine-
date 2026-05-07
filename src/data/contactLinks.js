@@ -5,16 +5,12 @@ export const contactLinks = {
   creativeLabel: "Creative / Music Inquiries",
   socials: [
     {
-      label: "LinkedIn",
-      url: "https://www.linkedin.com/company/careerlift360",
+      label: "Instagram: @drefeuskane",
+      url: "https://instagram.com/drefeuskane",
     },
     {
-      label: "Instagram: @CareerLift360",
-      url: "https://instagram.com/CareerLift360",
-    },
-    {
-      label: "YouTube",
-      url: "https://www.youtube.com/@careerlift360",
+      label: "Instagram: @krag4pro",
+      url: "https://instagram.com/krag4pro",
     },
   ],
 };
