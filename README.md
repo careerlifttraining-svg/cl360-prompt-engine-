@@ -8,6 +8,9 @@ Premium AI prompt-code platform for CareerLift360 LLC. The app helps entrepreneu
 - Vite
 - TailwindCSS
 - Static deployment ready for Render
+- Supabase Auth for user accounts
+- Progressive Web App support
+- Capacitor iOS and Android mobile packaging
 
 ## Quick Start
 
@@ -37,6 +40,31 @@ cp .env.example .env.local
 
 Only use `VITE_` variables for client-safe public values. Never place Stripe secret keys, webhook secrets, PHI, or private credentials in Vite client environment variables.
 
+For Supabase user accounts, set:
+
+```bash
+VITE_SUPABASE_URL=your_supabase_project_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_public_key
+```
+
+Saved dashboard prompts use a Supabase `saved_prompts` table with row-level security. See `docs/DEPLOYMENT.md` for the SQL schema and policies.
+
+For Stripe checkout, either set a secure backend endpoint:
+
+```bash
+VITE_STRIPE_CHECKOUT_ENDPOINT=https://your-api.example.com/api/stripe/checkout
+```
+
+Or set Stripe-hosted Payment Links:
+
+```bash
+VITE_STRIPE_STARTER_PAYMENT_LINK=https://buy.stripe.com/...
+VITE_STRIPE_PROFESSIONAL_PAYMENT_LINK=https://buy.stripe.com/...
+VITE_STRIPE_ENTERPRISE_PAYMENT_LINK=https://buy.stripe.com/...
+```
+
+Do not expose `STRIPE_SECRET_KEY` in this frontend app.
+
 ## Deployment
 
 Render configuration is included in `render.yaml`.
@@ -48,6 +76,10 @@ Render configuration is included in `render.yaml`.
 Detailed deployment notes are in `docs/DEPLOYMENT.md`.
 
 Latest production build verification is recorded in `docs/BUILD_VERIFICATION.md`.
+
+PWA installation notes are in `docs/PWA.md`.
+
+Capacitor mobile deployment notes are in `docs/MOBILE.md`.
 
 ## Folder Structure
 

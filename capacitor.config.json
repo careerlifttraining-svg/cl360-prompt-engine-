@@ -1,0 +1,18 @@
+{
+  "appId": "com.careerlift360.cl360promptengine",
+  "appName": "CL360 Prompt Engine",
+  "webDir": "dist",
+  "backgroundColor": "#05070d",
+  "ios": {
+    "scheme": "CL360 Prompt Engine",
+    "contentInset": "automatic"
+  },
+  "android": {
+    "backgroundColor": "#05070d",
+    "allowMixedContent": false,
+    "captureInput": true
+  },
+  "server": {
+    "androidScheme": "https"
+  }
+}

@@ -1,11 +1,15 @@
+import { useState } from "react";
 import SectionHeader from "../../components/SectionHeader";
+import { useAuth } from "../../context/AuthContext";
+import { hasStripeCheckout, startStripeCheckout } from "../../services/stripe";
 
 const plans = [
   {
+    key: "starter",
     name: "Starter",
     price: "$9",
     description: "Essential prompt-code access for solo builders getting started.",
-    cta: "Start With Starter",
+    cta: "Start Starter",
     features: [
       "Core CL360 prompt-code library",
       "Category search and filtering",
@@ -14,10 +18,11 @@ const plans = [
     ],
   },
   {
+    key: "professional",
     name: "Professional",
     price: "$29",
     description: "Advanced workflows for entrepreneurs, creators, and operators.",
-    cta: "Choose Professional",
+    cta: "Upgrade to Professional",
     features: [
       "Everything in Starter",
       "Prompt Generator workflow builder",
@@ -27,10 +32,11 @@ const plans = [
     featured: true,
   },
   {
+    key: "enterprise",
     name: "Enterprise",
     price: "$99",
     description: "Premium prompt-code systems for teams, agencies, and admin-heavy workflows.",
-    cta: "Request Enterprise",
+    cta: "Start Enterprise",
     features: [
       "Everything in Professional",
       "Team-ready prompt library structure",
@@ -41,14 +47,38 @@ const plans = [
 ];
 
 export default function PricingPlaceholder() {
+  const { user } = useAuth();
+  const [activePlan, setActivePlan] = useState("");
+  const [message, setMessage] = useState("");
+
+  async function handleCheckout(plan) {
+    setMessage("");
+    setActivePlan(plan.key);
+
+    try {
+      await startStripeCheckout({
+        planKey: plan.key,
+        customerEmail: user?.email,
+      });
+    } catch (error) {
+      setMessage(error.message || "Stripe checkout is unavailable right now.");
+      setActivePlan("");
+    }
+  }
+
   return (
     <section id="pricing" className="px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           eyebrow="Monthly Pricing"
-          title="Choose your CL360 prompt-code tier."
-          description="Simple monthly access for a premium AI prompt-code tool. Stripe checkout labels are in place and ready to connect when payment keys are available."
+          title="Launch with the plan that fits your workflow."
+          description="Start with the prompt-code essentials, then upgrade as your AI workflows, saved prompts, and business systems grow."
         />
+        {message ? (
+          <p className="mt-5 rounded-md border border-amber-300/25 bg-amber-300/10 p-4 text-sm leading-6 text-amber-50">
+            {message}
+          </p>
+        ) : null}
 
         <div className="mt-8 grid gap-4 lg:grid-cols-3">
           {plans.map((plan) => (
@@ -76,7 +106,7 @@ export default function PricingPlaceholder() {
                 <span className="text-base font-semibold text-slate-400">/month</span>
               </p>
               <p className="mt-2 inline-flex rounded-md border border-clblue-300/25 bg-clblue-500/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-clblue-100">
-                Stripe integration coming soon
+                {hasStripeCheckout(plan.key) ? "Stripe Checkout enabled" : "Add Stripe env vars"}
               </p>
               <ul className="mt-6 grid gap-3 text-sm text-slate-200">
                 {plan.features.map((feature) => (
@@ -88,12 +118,16 @@ export default function PricingPlaceholder() {
               </ul>
               <button
                 type="button"
-                disabled
-                className="mt-6 min-h-11 w-full rounded-md border border-clblue-300/35 bg-clblue-500/15 px-4 text-sm font-bold text-white/80 shadow-[0_0_22px_rgba(22,140,255,0.14)] transition duration-300 hover:border-clblue-300/60 hover:bg-clblue-500/20"
-                title="Connect this button to Stripe Checkout when payment keys are ready."
+                onClick={() => handleCheckout(plan)}
+                disabled={activePlan === plan.key}
+                className="mt-6 min-h-11 w-full rounded-md border border-clblue-300/35 bg-clblue-500/15 px-4 text-sm font-bold text-white/90 shadow-[0_0_22px_rgba(22,140,255,0.14)] transition duration-300 hover:-translate-y-0.5 hover:border-clblue-300/60 hover:bg-clblue-500/20 disabled:cursor-not-allowed disabled:opacity-70"
+                title="Start secure Stripe Checkout."
               >
-                {plan.cta}
+                {activePlan === plan.key ? "Opening Stripe..." : plan.cta}
               </button>
+              <p className="mt-3 text-center text-xs leading-5 text-slate-500">
+                Secure checkout via Stripe when payment links or a checkout endpoint are configured.
+              </p>
             </article>
           ))}
         </div>

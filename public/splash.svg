@@ -1,0 +1,8 @@
+<svg width="1170" height="2532" viewBox="0 0 1170 2532" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1170" height="2532" fill="#05070D"/>
+  <circle cx="585" cy="980" r="420" fill="#168CFF" fill-opacity="0.18"/>
+  <circle cx="585" cy="980" r="238" fill="#07111F" stroke="#75C2FF" stroke-width="8"/>
+  <text x="585" y="975" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="132" font-weight="900" fill="white">CL360</text>
+  <text x="585" y="1090" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="52" font-weight="800" fill="#75C2FF">Prompt Engine</text>
+  <text x="585" y="2300" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="700" fill="#D8DEE9">CareerLift360 LLC</text>
+</svg>

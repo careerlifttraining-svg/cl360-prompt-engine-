@@ -1,6 +1,8 @@
 import { useMemo, useState } from "react";
 import CopyButton from "../../components/CopyButton";
 import SectionHeader from "../../components/SectionHeader";
+import { useAuth } from "../../context/AuthContext";
+import { saveGeneratedPrompt } from "../../services/savedPrompts";
 
 const industries = [
   "Healthcare Admin",
@@ -39,12 +41,15 @@ const styleGuidance = {
 };
 
 export default function PromptGenerator() {
+  const { isConfigured, user } = useAuth();
   const [industry, setIndustry] = useState(industries[0]);
   const [goal, setGoal] = useState(goals[0]);
   const [promptStyle, setPromptStyle] = useState(promptStyles[1]);
   const [aiPlatform, setAiPlatform] = useState(aiPlatforms[0]);
   const [audience, setAudience] = useState("");
   const [context, setContext] = useState("");
+  const [saveStatus, setSaveStatus] = useState("");
+  const [saving, setSaving] = useState(false);
 
   const generatedPrompt = useMemo(() => {
     return `You are using CL360 Prompt Engine™ to create an optimized prompt for ${aiPlatform}.
@@ -78,6 +83,45 @@ Return:
 5. One advanced CL360 variation for higher-quality output.
 6. One caution or compliance note relevant to ${industry}.`;
   }, [aiPlatform, audience, context, goal, industry, promptStyle]);
+
+  async function handleSavePrompt() {
+    setSaveStatus("");
+
+    if (!isConfigured) {
+      setSaveStatus("Connect Supabase before saving prompts to the dashboard.");
+      return;
+    }
+
+    if (!user) {
+      setSaveStatus("Sign in or create an account to save prompts to your dashboard.");
+      return;
+    }
+
+    setSaving(true);
+
+    try {
+      await saveGeneratedPrompt({
+        userId: user.id,
+        title: `${industry} - ${goal}`,
+        prompt: generatedPrompt,
+        metadata: {
+          industry,
+          goal,
+          promptStyle,
+          aiPlatform,
+          audience,
+          context,
+        },
+      });
+
+      setSaveStatus("Saved to your CL360 dashboard.");
+      window.dispatchEvent(new CustomEvent("cl360:saved-prompt"));
+    } catch (error) {
+      setSaveStatus(error.message || "Could not save this prompt.");
+    } finally {
+      setSaving(false);
+    }
+  }
 
   return (
     <section id="generator" className="px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
@@ -192,6 +236,14 @@ Return:
                 <CopyButton text={generatedPrompt} label="Copy Prompt" />
                 <button
                   type="button"
+                  onClick={handleSavePrompt}
+                  disabled={saving}
+                  className="inline-flex min-h-10 items-center justify-center rounded-md border border-clblue-300/35 bg-clblue-500/15 px-4 text-sm font-bold text-white transition duration-300 hover:-translate-y-0.5 hover:border-clblue-300/60 hover:bg-clblue-500/20 hover:shadow-glow disabled:cursor-not-allowed disabled:opacity-70"
+                >
+                  {saving ? "Saving..." : "Save to Dashboard"}
+                </button>
+                <button
+                  type="button"
                   onClick={() => window.print()}
                   className="inline-flex min-h-10 items-center justify-center rounded-md border border-white/15 bg-white/10 px-4 text-sm font-bold text-white transition duration-300 hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/15 hover:shadow-glow"
                 >
@@ -202,6 +254,11 @@ Return:
             <pre className="mt-5 whitespace-pre-wrap rounded-md border border-white/10 bg-black/35 p-4 text-sm leading-7 text-slate-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
               {generatedPrompt}
             </pre>
+            {saveStatus ? (
+              <p className="mt-4 rounded-md border border-white/10 bg-black/25 p-3 text-sm leading-6 text-slate-200">
+                {saveStatus}
+              </p>
+            ) : null}
           </div>
         </div>
       </div>

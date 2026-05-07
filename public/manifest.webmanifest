@@ -1,0 +1,62 @@
+{
+  "name": "CL360 Prompt Engine™",
+  "short_name": "CL360",
+  "description": "Premium AI prompt-code platform by CareerLift360 LLC.",
+  "id": "/",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "browser"],
+  "orientation": "portrait-primary",
+  "background_color": "#05070d",
+  "theme_color": "#05070d",
+  "categories": ["business", "productivity", "education"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/maskable-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Generate Prompt",
+      "short_name": "Generator",
+      "description": "Open the CL360 Prompt Generator.",
+      "url": "/#generator",
+      "icons": [{ "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    },
+    {
+      "name": "Prompt Library",
+      "short_name": "Library",
+      "description": "Browse the CL360 Prompt Code Library.",
+      "url": "/#library",
+      "icons": [{ "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/mobile.svg",
+      "sizes": "390x844",
+      "type": "image/svg+xml",
+      "form_factor": "narrow",
+      "label": "CL360 mobile prompt generator"
+    },
+    {
+      "src": "/screenshots/desktop.svg",
+      "sizes": "1440x900",
+      "type": "image/svg+xml",
+      "form_factor": "wide",
+      "label": "CL360 desktop dashboard"
+    }
+  ]
+}

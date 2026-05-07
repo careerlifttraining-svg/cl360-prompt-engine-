@@ -1,0 +1,9 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1440" height="900" fill="#05070D"/>
+  <circle cx="270" cy="110" r="320" fill="#168CFF" fill-opacity="0.18"/>
+  <rect x="80" y="80" width="1280" height="740" rx="34" fill="#07111F" stroke="#168CFF" stroke-opacity="0.7"/>
+  <text x="130" y="170" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="900" fill="white">CL360 Prompt Engine™</text>
+  <rect x="130" y="230" width="520" height="420" rx="18" fill="#FFFFFF" fill-opacity="0.075"/>
+  <rect x="700" y="230" width="590" height="420" rx="18" fill="#000000" fill-opacity="0.28"/>
+  <rect x="130" y="690" width="1160" height="72" rx="16" fill="#168CFF" fill-opacity="0.2"/>
+</svg>

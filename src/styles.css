@@ -11,11 +11,16 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 8rem;
+  text-rendering: optimizeLegibility;
 }
 
 body {
   min-width: 320px;
   margin: 0;
+  min-height: 100svh;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
   background:
     linear-gradient(120deg, rgba(22, 140, 255, 0.14), transparent 28rem),
     radial-gradient(circle at 8% 4%, rgba(22, 140, 255, 0.28), transparent 34rem),
@@ -24,11 +29,22 @@ body {
     linear-gradient(135deg, #03040a 0%, #07111f 46%, #02040a 100%);
 }
 
+#root {
+  min-height: 100vh;
+}
+
 button,
 input,
 textarea,
 select {
   font: inherit;
+  font-size: 16px;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 ::selection {
@@ -45,16 +61,16 @@ select {
   }
 
   .glass-card-hover {
-    @apply transition duration-300 ease-out hover:-translate-y-1 hover:border-clblue-300/35 hover:shadow-glow;
+    @apply transition duration-300 ease-out will-change-transform hover:-translate-y-1 hover:border-clblue-300/35 hover:shadow-glow;
   }
 
   .premium-button {
-    @apply inline-flex min-h-12 items-center justify-center rounded-md bg-clblue-500 px-6 text-base font-bold text-white shadow-glow transition duration-300 hover:-translate-y-0.5 hover:bg-clblue-600 hover:shadow-[0_0_44px_rgba(22,140,255,0.36)] focus:outline-none focus:ring-2 focus:ring-clblue-300;
+    @apply inline-flex min-h-12 items-center justify-center rounded-md bg-clblue-500 px-6 text-center text-base font-bold text-white shadow-glow transition duration-300 hover:-translate-y-0.5 hover:bg-clblue-600 hover:shadow-[0_0_44px_rgba(22,140,255,0.36)] focus:outline-none focus:ring-2 focus:ring-clblue-300;
     background-image: linear-gradient(135deg, #168cff 0%, #006fe6 52%, #75c2ff 140%);
   }
 
   .secondary-button {
-    @apply inline-flex min-h-12 items-center justify-center rounded-md border border-white/15 bg-white/10 px-6 text-base font-bold text-white transition duration-300 hover:-translate-y-0.5 hover:border-clblue-300/60 hover:bg-white/15 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-clblue-300;
+    @apply inline-flex min-h-12 items-center justify-center rounded-md border border-white/15 bg-white/10 px-6 text-center text-base font-bold text-white transition duration-300 hover:-translate-y-0.5 hover:border-clblue-300/60 hover:bg-white/15 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-clblue-300;
   }
 
   .panel-input {
@@ -67,6 +83,55 @@ select {
       linear-gradient(90deg, rgba(117, 194, 255, 0.075) 1px, transparent 1px);
     background-size: 44px 44px;
     mask-image: linear-gradient(to bottom, black, transparent 82%);
+  }
+
+  .touch-scroll {
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .touch-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .animate-rise {
+    animation: rise-in 620ms ease-out both;
+  }
+}
+
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
+}
+
+#top {
+  content-visibility: visible;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }
 

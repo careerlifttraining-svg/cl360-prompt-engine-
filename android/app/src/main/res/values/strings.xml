@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">CL360 Prompt Engine</string>
+    <string name="title_activity_main">CL360 Prompt Engine</string>
+    <string name="package_name">com.careerlift360.cl360promptengine</string>
+    <string name="custom_url_scheme">com.careerlift360.cl360promptengine</string>
+</resources>
