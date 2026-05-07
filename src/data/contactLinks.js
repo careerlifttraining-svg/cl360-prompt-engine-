@@ -5,8 +5,8 @@ export const contactLinks = {
   creativeLabel: "Creative / Music Inquiries",
   socials: [
     {
-      label: "Instagram: @CareerLift360",
-      url: "https://instagram.com/CareerLift360",
+      label: "Instagram: @Careerlift_360",
+      url: "https://instagram.com/Careerlift_360",
     },
     {
       label: "Instagram: @drefeuskane",
