@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# Production output
+dist/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Local caches and logs
+.npm-cache/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local portable runtime artifacts
+node-v*-win-x64/
+node-portable.zip
+node-latest-v*.html
+portable-git.exe
+portable-git/
+git-runtime/
+mingit.zip
+mingit/
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
