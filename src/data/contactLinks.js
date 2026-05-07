@@ -6,6 +6,10 @@ export const contactLinks = {
   socials: [
     {
       label: "Instagram: @CareerLift360",
+      url: "https://instagram.com/CareerLift360",
+    },
+    {
+      label: "Instagram: @drefeuskane",
       url: "https://instagram.com/drefeuskane",
     },
     {
