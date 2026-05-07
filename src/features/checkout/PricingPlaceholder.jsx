@@ -71,8 +71,8 @@ export default function PricingPlaceholder() {
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           eyebrow="Monthly Pricing"
-          title="Launch with the plan that fits your workflow."
-          description="Start with the prompt-code essentials, then upgrade as your AI workflows, saved prompts, and business systems grow."
+          title="Founding user access plans."
+          description="Beta access gives early adopters a clear path into CL360 as new prompt-code features, dashboards, and workflow tools are tested weekly."
         />
         {message ? (
           <p className="mt-5 rounded-md border border-amber-300/25 bg-amber-300/10 p-4 text-sm leading-6 text-amber-50">
@@ -97,7 +97,7 @@ export default function PricingPlaceholder() {
                 </div>
                 {plan.featured ? (
                   <span className="rounded-md bg-white px-2.5 py-1 text-xs font-black text-ink shadow-[0_0_20px_rgba(255,255,255,0.18)]">
-                    BEST
+                    FOUNDING
                   </span>
                 ) : null}
               </div>
@@ -106,7 +106,7 @@ export default function PricingPlaceholder() {
                 <span className="text-base font-semibold text-slate-400">/month</span>
               </p>
               <p className="mt-2 inline-flex rounded-md border border-clblue-300/25 bg-clblue-500/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-clblue-100">
-                {hasStripeCheckout(plan.key) ? "Stripe Checkout enabled" : "Add Stripe env vars"}
+                {hasStripeCheckout(plan.key) ? "Beta checkout ready" : "Beta access opening soon"}
               </p>
               <ul className="mt-6 grid gap-3 text-sm text-slate-200">
                 {plan.features.map((feature) => (
@@ -126,7 +126,7 @@ export default function PricingPlaceholder() {
                 {activePlan === plan.key ? "Opening Stripe..." : plan.cta}
               </button>
               <p className="mt-3 text-center text-xs leading-5 text-slate-500">
-                Secure checkout via Stripe when payment links or a checkout endpoint are configured.
+                Secure checkout powered by Stripe as paid access opens.
               </p>
             </article>
           ))}

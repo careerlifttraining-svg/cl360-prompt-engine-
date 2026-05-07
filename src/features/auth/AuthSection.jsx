@@ -20,7 +20,7 @@ export default function AuthSection() {
     try {
       if (mode === "create-account") {
         await signUp({ email, password, fullName });
-        setStatus("Account created. Check your email if confirmation is enabled in Supabase.");
+        setStatus("Account created. Check your email to complete access if confirmation is required.");
       } else {
         await signIn({ email, password });
         setStatus("Signed in successfully.");
@@ -57,13 +57,33 @@ export default function AuthSection() {
 
         <div className="glass-card rounded-lg p-5 sm:p-6">
           {!isConfigured ? (
-            <div className="rounded-md border border-amber-300/25 bg-amber-300/10 p-4">
-              <h3 className="text-lg font-black text-white">Supabase setup required</h3>
-              <p className="mt-2 text-sm leading-6 text-slate-300">
-                Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` to your local
-                `.env.local` and Render environment variables to enable account creation
-                and sign in.
-              </p>
+            <div className="relative overflow-hidden rounded-md border border-clblue-300/25 bg-clblue-500/10 p-5">
+              <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-clblue-500/20 blur-3xl" />
+              <div className="relative">
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-clblue-300">
+                  Early Adopter Program
+                </p>
+                <h3 className="mt-2 text-2xl font-black text-white">Beta Access Coming Soon</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-300">
+                  CL360 dashboards are being prepared for early members. Soon you will be
+                  able to save generated prompts, organize workflows, and unlock member-only
+                  prompt-code systems from your account. Founding user feedback will help
+                  guide features tested weekly.
+                </p>
+                <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                  {["Saved prompts", "Member library", "Subscription access"].map((item) => (
+                    <div
+                      key={item}
+                      className="rounded-md border border-white/10 bg-black/25 p-3 text-sm font-bold text-slate-100"
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+                <a className="premium-button mt-5 w-full" href="#contact">
+                  Request Beta Access
+                </a>
+              </div>
             </div>
           ) : loading ? (
             <div className="rounded-md border border-white/10 bg-black/25 p-4 text-sm text-slate-300">

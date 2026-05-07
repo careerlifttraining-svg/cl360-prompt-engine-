@@ -1,7 +1,9 @@
+import { contactLinks, mailto } from "../../data/contactLinks";
+
 const ctaStats = [
-  { label: "Prompt categories", value: "6" },
-  { label: "AI platforms", value: "4" },
-  { label: "Starter plan", value: "$9" },
+  { label: "Early adopter program", value: "Beta" },
+  { label: "Testing new features weekly", value: "Weekly" },
+  { label: "Founding user access", value: "Open" },
 ];
 
 export default function ConversionCta() {
@@ -13,25 +15,53 @@ export default function ConversionCta() {
           <div className="relative grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
               <p className="text-xs font-bold uppercase tracking-[0.24em] text-clblue-300">
-                Premium prompt-code engine
+                Early Adopter Program
               </p>
               <h2 className="mt-3 text-2xl font-black leading-tight text-white sm:text-4xl">
-                Turn every AI session into a repeatable workflow.
+                Help shape CL360 before the public release.
               </h2>
               <p className="mt-4 max-w-3xl text-base leading-7 text-slate-300">
                 Generate platform-specific prompts, browse proven prompt-code patterns,
                 save your best outputs, and upgrade when you are ready for a full CL360
-                workflow library.
+                workflow library. Founding users can submit feedback as new features are
+                tested weekly.
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
               <a className="premium-button" href="#pricing">
-                Compare Plans
+                View Beta Plans
               </a>
-              <a className="secondary-button" href="#account">
-                Create Account
+              <a className="secondary-button" href="#contact">
+                Submit Feedback
+              </a>
+              <a className="secondary-button" href="#waitlist">
+                Join Waitlist
               </a>
             </div>
+          </div>
+
+          <div className="relative mt-6 flex flex-col gap-2 rounded-md border border-clblue-300/20 bg-clblue-500/10 p-4 text-sm font-semibold text-slate-200 sm:flex-row sm:flex-wrap sm:items-center">
+            <span className="text-white">Support contacts:</span>
+            <a className="break-all text-clblue-300 transition hover:text-white" href={mailto(contactLinks.supportEmail, "CL360 Early Access")}>
+              {contactLinks.supportLabel}: {contactLinks.supportEmail}
+            </a>
+            <span className="hidden text-slate-500 sm:inline">|</span>
+            <a className="break-all text-clblue-300 transition hover:text-white" href={mailto(contactLinks.creativeEmail, "CL360 Music and Creative Inquiry")}>
+              {contactLinks.creativeLabel}: {contactLinks.creativeEmail}
+            </a>
+            <span className="hidden text-slate-500 sm:inline">|</span>
+            <span className="text-white">Social:</span>
+            {contactLinks.socials.map((social) => (
+              <a
+                key={social.label}
+                className="text-clblue-300 transition hover:text-white"
+                href={social.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {social.label}
+              </a>
+            ))}
           </div>
 
           <div className="relative mt-6 grid gap-3 sm:grid-cols-3">

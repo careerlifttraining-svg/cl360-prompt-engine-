@@ -82,5 +82,5 @@ export async function startStripeCheckout({ planKey, customerEmail }) {
     return;
   }
 
-  throw new Error("Stripe checkout is not configured yet.");
+  throw new Error("Paid checkout is opening soon.");
 }

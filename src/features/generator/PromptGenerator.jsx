@@ -88,7 +88,7 @@ Return:
     setSaveStatus("");
 
     if (!isConfigured) {
-      setSaveStatus("Connect Supabase before saving prompts to the dashboard.");
+      setSaveStatus("Dashboard saving is opening soon for CL360 beta members.");
       return;
     }
 

@@ -1,8 +1,11 @@
+import { contactLinks, mailto } from "../data/contactLinks";
+
 const navItems = [
   { label: "Account", href: "#account" },
   { label: "Generator", href: "#generator" },
   { label: "Library", href: "#library" },
   { label: "Pricing", href: "#pricing" },
+  { label: "Waitlist", href: "#waitlist" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -55,6 +58,18 @@ export default function NavBar() {
               {item.label}
             </a>
           ))}
+          <a
+            href={mailto(contactLinks.supportEmail, "CL360 Business Support")}
+            className="inline-flex min-h-11 shrink-0 items-center rounded-md border border-clblue-300/25 bg-clblue-500/10 px-4 text-sm font-bold text-clblue-100"
+          >
+            Support
+          </a>
+          <a
+            href={mailto(contactLinks.creativeEmail, "CL360 Creative Inquiry")}
+            className="inline-flex min-h-11 shrink-0 items-center rounded-md border border-clblue-300/25 bg-clblue-500/10 px-4 text-sm font-bold text-clblue-100"
+          >
+            Music
+          </a>
         </div>
       </nav>
     </header>

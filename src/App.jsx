@@ -7,6 +7,8 @@ import ConversionCta from "./features/landing/ConversionCta";
 import Hero from "./features/landing/Hero";
 import LegalPages from "./features/legal/LegalPages";
 import PromptLibrary from "./features/library/PromptLibrary";
+import WaitlistSection from "./features/waitlist/WaitlistSection";
+import { contactLinks, mailto } from "./data/contactLinks";
 
 export default function App() {
   return (
@@ -18,6 +20,7 @@ export default function App() {
         <PromptGenerator />
         <PromptLibrary />
         <PricingPlaceholder />
+        <WaitlistSection />
         <AuthSection />
         <ContactSection />
         <LegalPages />
@@ -27,6 +30,27 @@ export default function App() {
           <div>
             <p className="text-base font-black text-white">CareerLift360 LLC</p>
             <p className="mt-1">© 2026 CareerLift360 LLC. CL360 Prompt Engine™.</p>
+            <div className="mt-3 grid gap-1 text-sm font-semibold">
+              <a className="break-all text-clblue-300 transition hover:text-white" href={mailto(contactLinks.supportEmail, "CL360 Business Support")}>
+                {contactLinks.supportLabel}: {contactLinks.supportEmail}
+              </a>
+              <a className="break-all text-clblue-300 transition hover:text-white" href={mailto(contactLinks.creativeEmail, "CL360 Music and Creative Inquiry")}>
+                {contactLinks.creativeLabel}: {contactLinks.creativeEmail}
+              </a>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {contactLinks.socials.map((social) => (
+                  <a
+                    key={social.label}
+                    className="rounded-md border border-white/10 bg-white/[0.06] px-2.5 py-1 text-xs font-bold text-clblue-300 transition hover:border-clblue-300/40 hover:text-white"
+                    href={social.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {social.label}
+                  </a>
+                ))}
+              </div>
+            </div>
             <p className="mt-2 max-w-xl text-xs leading-5 text-slate-500">
               Educational AI prompt-code tool. No medical, legal, or financial advice.
               No PHI processing. No guarantee of income or business results.

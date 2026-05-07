@@ -41,7 +41,7 @@ export function AuthProvider({ children }) {
       session,
       user: session?.user ?? null,
       async signUp({ email, password, fullName }) {
-        if (!supabase) throw new Error("Supabase is not configured.");
+        if (!supabase) throw new Error("CL360 beta accounts are opening soon.");
 
         const { data, error } = await supabase.auth.signUp({
           email,
@@ -57,7 +57,7 @@ export function AuthProvider({ children }) {
         return data;
       },
       async signIn({ email, password }) {
-        if (!supabase) throw new Error("Supabase is not configured.");
+        if (!supabase) throw new Error("CL360 beta accounts are opening soon.");
 
         const { data, error } = await supabase.auth.signInWithPassword({
           email,
@@ -68,7 +68,7 @@ export function AuthProvider({ children }) {
         return data;
       },
       async signOut() {
-        if (!supabase) throw new Error("Supabase is not configured.");
+        if (!supabase) throw new Error("CL360 account access is opening soon.");
 
         const { error } = await supabase.auth.signOut();
         if (error) throw error;

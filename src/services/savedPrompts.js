@@ -4,7 +4,7 @@ const tableName = "saved_prompts";
 
 export async function saveGeneratedPrompt({ userId, title, prompt, metadata }) {
   if (!supabase) {
-    throw new Error("Supabase is not configured.");
+    throw new Error("Dashboard saving is opening soon for CL360 beta members.");
   }
 
   const { data, error } = await supabase
@@ -24,7 +24,7 @@ export async function saveGeneratedPrompt({ userId, title, prompt, metadata }) {
 
 export async function listSavedPrompts(userId) {
   if (!supabase) {
-    throw new Error("Supabase is not configured.");
+    throw new Error("Saved prompt dashboards are opening soon.");
   }
 
   const { data, error } = await supabase
@@ -39,7 +39,7 @@ export async function listSavedPrompts(userId) {
 
 export async function deleteSavedPrompt({ userId, promptId }) {
   if (!supabase) {
-    throw new Error("Supabase is not configured.");
+    throw new Error("Saved prompt dashboards are opening soon.");
   }
 
   const { error } = await supabase

@@ -1,7 +1,12 @@
+import { contactLinks, mailto } from "../../data/contactLinks";
+
 const proofPoints = [
+  "Beta Access",
+  "Early Adopter Program",
+  "Testing New Features Weekly",
+  "Founding User Access",
   "Generate prompts in minutes",
   "Save workflows to your dashboard",
-  "Plans start at $9/month",
 ];
 
 const audienceCards = [
@@ -36,6 +41,9 @@ export default function Hero() {
       <div className="pointer-events-none absolute left-1/2 top-20 h-72 w-72 -translate-x-1/2 rounded-full bg-clblue-500/20 blur-3xl" />
       <div className="mx-auto grid max-w-7xl items-center gap-7 sm:gap-10 lg:grid-cols-[1.08fr_0.92fr]">
         <div className="relative animate-rise">
+          <div className="mb-4 inline-flex rounded-md border border-clblue-300/35 bg-clblue-500/15 px-3 py-2 text-xs font-black uppercase tracking-[0.22em] text-clblue-50 shadow-glow">
+            Beta Access
+          </div>
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-clblue-300 sm:text-sm">
             CareerLift360 LLC AI Prompt-Code Platform
           </p>
@@ -46,6 +54,8 @@ export default function Hero() {
             CL360 Prompt Engine&trade; helps entrepreneurs, healthcare admin
             professionals, content creators, and music marketers turn scattered ideas
             into structured prompts, saved workflows, and client-ready AI outputs.
+            Join the early adopter program and help shape new CL360 features as they
+            are tested weekly.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-2">
@@ -64,8 +74,33 @@ export default function Hero() {
               Try the Generator
             </a>
             <a href="#pricing" className="secondary-button">
-              View Plans
+              Founding User Access
             </a>
+          </div>
+          <a
+            href="#waitlist"
+            className="mt-3 inline-flex min-h-11 items-center justify-center rounded-md border border-white/10 bg-white/[0.06] px-4 text-sm font-bold text-slate-100 transition hover:border-clblue-300/40 hover:bg-white/10 sm:mt-4"
+          >
+            Join Beta Waitlist
+          </a>
+          <div className="mt-4 flex flex-col gap-1 text-sm font-semibold text-slate-400 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
+            <a className="break-all text-clblue-300 transition hover:text-white" href={mailto(contactLinks.supportEmail, "CL360 Beta Access")}>
+              {contactLinks.supportLabel}: {contactLinks.supportEmail}
+            </a>
+            <a className="break-all text-clblue-300 transition hover:text-white" href={mailto(contactLinks.creativeEmail, "CL360 Music and Creative Inquiry")}>
+              {contactLinks.creativeLabel}: {contactLinks.creativeEmail}
+            </a>
+            {contactLinks.socials.map((social) => (
+              <a
+                key={social.label}
+                className="text-clblue-300 transition hover:text-white"
+                href={social.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {social.label}
+              </a>
+            ))}
           </div>
           <p className="mt-4 text-sm font-semibold text-slate-400">
             Educational prompt-code tool. No PHI processing. No income guarantees.
@@ -83,7 +118,7 @@ export default function Hero() {
                 <p className="mt-1 text-lg font-bold text-white">Monetizable AI workflows</p>
               </div>
               <span className="rounded-md border border-emerald-300/30 bg-emerald-400/10 px-3 py-1 text-xs font-bold text-emerald-200">
-                PRO
+                BETA
               </span>
             </div>
             <div className="mt-5 grid gap-3">
