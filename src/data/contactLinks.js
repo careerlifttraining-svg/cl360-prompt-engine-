@@ -9,8 +9,8 @@ export const contactLinks = {
       url: "https://www.linkedin.com/company/careerlift360",
     },
     {
-      label: "Instagram",
-      url: "https://www.instagram.com/careerlift360",
+      label: "Instagram: @CareerLift360",
+      url: "https://instagram.com/CareerLift360",
     },
     {
       label: "YouTube",
